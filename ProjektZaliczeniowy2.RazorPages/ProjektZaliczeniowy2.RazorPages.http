@@ -1,0 +1,6 @@
+@ProjektZaliczeniowy2.RazorPages_HostAddress = http://localhost:5249
+
+GET {{ProjektZaliczeniowy2.RazorPages_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

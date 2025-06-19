@@ -1,0 +1,29 @@
+﻿=@page
+@model ProjektZaliczeniowy2.RazorPages.Pages.UserListModel
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h2>User List</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model.Users)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.Name</td>
+            <td>@user.Email</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a href="/AddUser">Add User</a>

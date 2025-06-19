@@ -1,0 +1,19 @@
+﻿@page
+@model ProjektZaliczeniowy2.RazorPages.Pages.AddUserModel
+@{
+    ViewData["Title"] = "Add User";
+}
+
+<h2>Add User</h2>
+
+<form method="post">
+    <div>
+        <label>Name:</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label>Email:</label>
+        <input asp-for="Email" />
+    </div>
+    <button type="submit">Add User</button>
+</form>
