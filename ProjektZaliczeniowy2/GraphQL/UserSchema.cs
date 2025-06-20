@@ -7,7 +7,7 @@ namespace ProjektZaliczeniowy2.GraphQL
         public UserSchema(IServiceProvider provider) : base(provider)
         {
             Query = provider.GetRequiredService<UserQuery>();
-            Mutation = provider.GetRequiredService<UserMutation>(); // <--- TO MUSI BYĆ!
+            Mutation = provider.GetRequiredService<UserMutation>(); 
         }
     }
 }

@@ -15,7 +15,6 @@ namespace ProjektZaliczeniowy2.Controllers
             _context = context;
         }
 
-        // GET: api/Project
         [HttpGet]
         public IActionResult GetAllProjects()
         {
@@ -23,7 +22,6 @@ namespace ProjektZaliczeniowy2.Controllers
             return Ok(projects);
         }
 
-        // GET: api/Project/{id}
         [HttpGet("{id}")]
         public IActionResult GetProjectById(int id)
         {
@@ -35,7 +33,6 @@ namespace ProjektZaliczeniowy2.Controllers
             return Ok(project);
         }
 
-        // POST: api/Project
         [HttpPost]
         public IActionResult AddProject([FromBody] Project project)
         {
@@ -50,7 +47,6 @@ namespace ProjektZaliczeniowy2.Controllers
             return CreatedAtAction(nameof(GetProjectById), new { id = project.Id }, project);
         }
 
-        // PUT: api/Project/{id}
         [HttpPut("{id}")]
         public IActionResult UpdateProject(int id, [FromBody] Project updatedProject)
         {
@@ -61,14 +57,12 @@ namespace ProjektZaliczeniowy2.Controllers
             }
 
             project.Title = updatedProject.Title;
-            // Jeśli masz inne pola, zaktualizuj je tutaj
 
             _context.SaveChanges();
 
             return NoContent();
         }
 
-        // DELETE: api/Project/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteProject(int id)
         {

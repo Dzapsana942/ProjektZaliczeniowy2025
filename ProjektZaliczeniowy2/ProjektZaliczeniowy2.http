@@ -3,4 +3,4 @@
 GET {{ProjektZaliczeniowy2_HostAddress}}/weatherforecast/
 Accept: application/json
 
-###
+

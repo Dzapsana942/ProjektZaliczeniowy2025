@@ -6,7 +6,6 @@
         public string Title { get; set; } = string.Empty;
         public bool IsDone { get; set; } = false;
 
-        // Relacje
         public int UserId { get; set; }
         public User? User { get; set; }
 

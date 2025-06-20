@@ -3,18 +3,18 @@ using GraphQL.Types;
 using GraphQL;
 using GraphQL.MicrosoftDI;
 using GraphQL.SystemTextJson;
-using GraphQL.Server; // UWAGA! GraphQL.Server.Transports.AspNetCore + GraphQL.Server.Ui.Playground
+using GraphQL.Server; 
 using ProjektZaliczeniowy2.GraphQL;
 using ProjektZaliczeniowy2.Data;
 using ProjektZaliczeniowy2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add Controllers
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Swagger + JWT
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -43,7 +43,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// JWT Authentication
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme;
@@ -61,18 +61,16 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// InMemory DB
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseInMemoryDatabase("TestDb"));
 
-// JwtService
+
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddHttpContextAccessor();
 
-// GraphQL
 builder.Services.AddScoped<UserType>();
 builder.Services.AddScoped<UserQuery>();
-builder.Services.AddScoped<UserMutation>(); // dodane!
+builder.Services.AddScoped<UserMutation>(); 
 builder.Services.AddScoped<ISchema, UserSchema>();
 
 builder.Services.AddGraphQL(builder => builder
@@ -82,17 +80,16 @@ builder.Services.AddGraphQL(builder => builder
     .AddSchema<UserSchema>()
 );
 
-// Build app
+
 var app = builder.Build();
 
-// Swagger UI
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Middleware
 app.UseMiddleware<ProjektZaliczeniowy2.Middleware.HeaderLoggingMiddleware>();
 
 app.UseHttpsRedirection();
@@ -100,12 +97,12 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Mapowanie kontrolerów
+
 app.MapControllers();
 
-// GraphQL endpoint
+
 app.UseGraphQL<ISchema>();
-app.UseGraphQLPlayground(); // Dostęp pod /ui/playground
+app.UseGraphQLPlayground(); 
 
 using (var scope = app.Services.CreateScope())
 {

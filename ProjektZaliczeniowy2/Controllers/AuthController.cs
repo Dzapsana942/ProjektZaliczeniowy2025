@@ -17,8 +17,6 @@ namespace ProjektZaliczeniowy2.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
-            // UWAGA: tu normalnie sprawdzałoby się hasło w bazie!
-            // My robimy na sztywno dla zaliczenia:
 
             if (request.Email == "test@test.com" && request.Name == "testuser")
             {

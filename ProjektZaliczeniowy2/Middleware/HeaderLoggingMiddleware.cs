@@ -11,14 +11,12 @@
 
         public async Task InvokeAsync(HttpContext context)
         {
-            // Wypisz nagłówki żądania
             Console.WriteLine("=== NAGŁÓWKI ŻĄDANIA ===");
             foreach (var header in context.Request.Headers)
             {
                 Console.WriteLine($"{header.Key}: {header.Value}");
             }
 
-            // Dodaj nagłówek do odpowiedzi
             context.Response.OnStarting(() =>
             {
                 context.Response.Headers.Add("X-Powered-By", "ProjektZaliczeniowy2");
